@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -7,7 +7,7 @@ import {
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
-import { Title, Text, Button } from 'react-native-paper';
+import { Title, Text } from 'react-native-paper';
 import imageSplash from '../assets/images/inicio.png';
 import LottieView from 'lottie-react-native';
 import RightArrow from '../assets/animations/rightarrow';

@@ -16,6 +16,8 @@ target 'WalletXpress' do
 
   pod 'lottie-ios', :path => '../node_modules/lottie-ios'
 
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
   target 'WalletXpressTests' do
     inherit! :complete
     # Pods for testing
