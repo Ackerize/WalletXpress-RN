@@ -11,7 +11,12 @@ import {
 import { Title, Text } from 'react-native-paper';
 import WelcomeImg from '../assets/images/welcome.png';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
+
+  const onSignUp = () => {
+    navigation.navigate('Register');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -45,7 +50,7 @@ const LoginScreen = () => {
         </View>
         <View style={[styles.btnContainer, styles.textContainer]}>
           <Text style={styles.text}>New Here?</Text>
-          <TouchableOpacity style={styles.linkContainer}>
+          <TouchableOpacity style={styles.linkContainer} onPress={onSignUp}>
             <Text style={styles.link}>sign up</Text>
           </TouchableOpacity>
         </View>
@@ -82,7 +87,7 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
   },
   bottom: {
-    height: '55%',
+    height: '60%',
     marginTop: -25,
     marginHorizontal: 20,
     paddingHorizontal: 20,
