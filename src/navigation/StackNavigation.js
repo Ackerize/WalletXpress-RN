@@ -11,11 +11,16 @@ const Stack = createStackNavigator();
 let isSignedIn = false;
 
 const StackNavigation = () => {
-	const { loading } = useSelector(state => state.ui);
+	const { ui, auth } = useSelector(state => state);
+	const { loading } = ui;
+	const { loggedIn } = auth;
+
+	console.log({ loggedIn })
+
 	return (
 		<Stack.Navigator>
 			{!loading ? (
-				!isSignedIn ? (
+				!loggedIn ? (
 					<>
 						<Stack.Screen
 							name="Login"

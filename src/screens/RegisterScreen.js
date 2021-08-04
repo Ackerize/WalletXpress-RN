@@ -10,12 +10,26 @@ import {
 } from 'react-native';
 import { Title, Text } from 'react-native-paper';
 import WalletImg from '../assets/images/wallet.png'
+import { useForm } from '../hooks/useForm';
+import { registerUser } from '../api/auth';
 
 const RegisterScreen = ({ navigation }) => {
+
+  const [ formValues, handleInputChange ] = useForm({
+    email: '',
+    username: '',
+    password: '',
+  });
 
   const onSignIn = () => {
     navigation.navigate('Login');
   };
+
+  const handleRegister = () => {
+    console.log(formValues);
+    registerUser(formValues, navigation);
+  };
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -33,11 +47,11 @@ const RegisterScreen = ({ navigation }) => {
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Email</Text>
-          <TextInput placeholder="Email" style={styles.input} />
+          <TextInput placeholder="Email" style={styles.input} onChange={handleInputChange("email")} />
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Username</Text>
-          <TextInput placeholder="Username" style={styles.input} />
+          <TextInput placeholder="Username" style={styles.input} onChange={handleInputChange("username")} />
         </View>
         <View style={[styles.inputContainer, styles.password]}>
           <Text style={styles.label}>Password</Text>
@@ -45,10 +59,11 @@ const RegisterScreen = ({ navigation }) => {
             placeholder="Password"
             style={styles.input}
             secureTextEntry={true}
+            onChange={handleInputChange("password")}
           />
         </View>
         <View style={styles.btnContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleRegister}>
             <Text style={styles.btn}>Sign up</Text>
           </TouchableOpacity>
         </View>

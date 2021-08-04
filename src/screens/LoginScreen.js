@@ -9,12 +9,26 @@ import {
   Image,
 } from 'react-native';
 import { Title, Text } from 'react-native-paper';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../api/auth';
 import WelcomeImg from '../assets/images/welcome.png';
+import { useForm } from '../hooks/useForm';
 
 const LoginScreen = ({ navigation }) => {
 
+  const dispatch = useDispatch();
+
+  const [ formValues, handleInputChange ] = useForm({
+    username: '',
+    password: '',
+  });
+
   const onSignUp = () => {
     navigation.navigate('Register');
+  };
+
+  const handleLogin = () => {
+    loginUser(formValues, navigation, dispatch);
   };
 
   return (
@@ -29,11 +43,11 @@ const LoginScreen = ({ navigation }) => {
       </View>
       <View style={styles.bottom}>
         <View style={styles.title}>
-          <Title style={styles.titleText}>Welcome back!</Title>
+          <Title style={styles.titleText} >Welcome back!</Title>
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Username</Text>
-          <TextInput placeholder="Username" style={styles.input} />
+          <TextInput placeholder="Username" style={styles.input} onChange={handleInputChange("username")} />
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Password</Text>
@@ -41,10 +55,11 @@ const LoginScreen = ({ navigation }) => {
             placeholder="Password"
             style={styles.input}
             secureTextEntry={true}
+            onChange={handleInputChange("password")}
           />
         </View>
         <View style={styles.btnContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleLogin}>
             <Text style={styles.btn}>Sign in</Text>
           </TouchableOpacity>
         </View>
