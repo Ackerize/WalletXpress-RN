@@ -9,7 +9,7 @@ import Carousel from 'react-native-snap-carousel';
 import CreditCard from './CreditCard';
 
 const { width } = Dimensions.get('window');
-const ITEM_WIDTH = Math.round(width * 0.7);
+const ITEM_WIDTH = Math.round(width * 0.75);
 
 const CarouselCards = ({ data }) => {
 	return (
@@ -28,7 +28,11 @@ const RenderItem = ({ data }) => {
 	return (
 		<TouchableWithoutFeedback>
 			<View style={styles.card}>
-				<CreditCard name={name} balance={`$ ${balance}`} bgColor={bgColor} />
+				<CreditCard
+					name={name}
+					balance={`$ ${balance}`}
+					bgColor={bgColor}
+				/>
 			</View>
 		</TouchableWithoutFeedback>
 	);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native'
+import { Title } from 'react-native-paper';
 import CarouselCards from '../components/CarouselCards';
 import FocusAwareStatusBar from '../components/FocusAwareStatusBar';
 
@@ -21,6 +22,7 @@ const HomeScreen = () => {
     return (
         <View style={styles.background}>
             <FocusAwareStatusBar barStyle="dark-content" backgroundColor="white" />
+            <Title style={styles.title}>My cards</Title>
             <View style={styles.container}>
                 <CarouselCards data={cards} />
             </View>
@@ -35,6 +37,13 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         width: '100%',
         height: '100%',
+    },
+    title: {
+        fontSize: 22,
+        fontFamily: 'Rubik-SemiBold',
+        paddingHorizontal: 10,
+        marginHorizontal: 10,
+        marginVertical: 15,
     },
     container: {
         flex: 1,
