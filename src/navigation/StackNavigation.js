@@ -1,22 +1,19 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import AppNavigation from './AppNavigation';
-import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
-import SplashScreen from '../screens/SplashScreen';
-import { useSelector } from 'react-redux';
+import React from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
+import AppNavigation from './AppNavigation'
+import LoginScreen from '../screens/LoginScreen'
+import RegisterScreen from '../screens/RegisterScreen'
+import SplashScreen from '../screens/SplashScreen'
+import { useSelector } from 'react-redux'
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
-let isSignedIn = false;
+let isSignedIn = false
 
 const StackNavigation = () => {
-	const { ui, auth } = useSelector(state => state);
-	const { loading } = ui;
-	const { loggedIn } = auth;
-
-	console.log({ loggedIn })
-
+	const { ui, auth } = useSelector(state => state)
+	const { loading } = ui
+	const { loggedIn } = auth
 	return (
 		<Stack.Navigator>
 			{!loading ? (
@@ -52,7 +49,7 @@ const StackNavigation = () => {
 				/>
 			)}
 		</Stack.Navigator>
-	);
-};
+	)
+}
 
-export default StackNavigation;
+export default StackNavigation

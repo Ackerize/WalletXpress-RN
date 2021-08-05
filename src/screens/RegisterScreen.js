@@ -26,7 +26,6 @@ const RegisterScreen = ({ navigation }) => {
   };
 
   const handleRegister = () => {
-    console.log(formValues);
     registerUser(formValues, navigation);
   };
 
